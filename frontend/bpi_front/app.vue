@@ -154,7 +154,7 @@ const timeScaleOptionsNow = {
       <button type="button" @click="setIntervalYear">Year ago</button>
       <button type="button" @click="setIntervalMonth">Month ago</button>
       <button type="button" @click="setIntervalWeek">Week ago</button>
-      <button type="button" @click="setIntervalDay">Tomorrow</button>
+      <button type="button" @click="setIntervalDay">Day ago</button>
       <div style="margin-top: 10px">
         <input
           v-model="dateFrom"
