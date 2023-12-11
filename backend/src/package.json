@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "npx ts-node -T index.ts",
+    "dev": "ts-node --esm ./app/index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "esbuild": "^0.19.9",
+    "express": "^4.18.2",
+    "module": "^1.2.5",
+    "moment": "^2.29.4",
+    "mongoose": "^8.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts-strictest": "^18.12.1",
+    "nodemon": "^3.0.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
