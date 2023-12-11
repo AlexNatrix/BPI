@@ -1,16 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   typescript: {
-    typeCheck: true
+    typeCheck: true,
+  },
+  runtimeConfig: {
+    public: {
+      BASE_URL: process.env.BASE_URL,
+    },
   },
   vite: {
     server: {
-      watch: { usePolling: true },
       hmr: {
-        host: 'localhost'
-      }
+        protocol: "ws",
+        host: "localhost",
+      },
     },
-
   },
   devtools: { enabled: true },
   css: ["@/style.css"],

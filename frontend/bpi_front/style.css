@@ -55,7 +55,7 @@ input[type="date"] {
 }
 .chart-container {
   height: calc(100%-3.2em) !important;
-  display: flex;
+  display: flex; 
   justify-content: center;
   justify-items: center;
   flex-direction: column;

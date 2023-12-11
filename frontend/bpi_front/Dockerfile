@@ -1,22 +1,17 @@
-# Dockerfile
-FROM node:18.18.0-alpine
+FROM node:18.18.0
 
-# create destination directory
-RUN mkdir -p /usr/src/nuxt-app
-WORKDIR /usr/src/nuxt-app
+WORKDIR /frontend
 
-# update and install dependency
-RUN apk update && apk upgrade
-RUN apk add git
+COPY package*.json ./
 
-# copy the app, note .dockerignore
-COPY . /usr/src/nuxt-app/
 RUN yarn install
-RUN yarn run build
 
-EXPOSE 3000
+COPY . .
 
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
 
-CMD [ "yarn","run", "dev" ]
+EXPOSE 24678
+EXPOSE 3000
+
+CMD ["yarn", "run", "dev"]

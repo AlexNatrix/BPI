@@ -1,0 +1,35 @@
+services:
+  api:
+    container_name: bpi_api
+    build: ./backend/src
+    ports:
+      - "5000:5000"
+    volumes:
+      - /src/app
+      - /node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  nuxt-app:
+    build: ./frontend/bpi_front
+    container_name: client
+    restart: always
+    ports:
+      - "3000:3000"
+    command: "yarn run dev"
+    networks:
+      - nuxt-network
+    depends_on:
+      - api
+networks:
+  nuxt-network:
+    driver: bridge

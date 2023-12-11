@@ -1,7 +1,6 @@
 import moment from "moment";
 import { PriceModel } from "../Models/Price.ts";
 import axios from "axios";
-import { json } from "express";
 import { logger } from "../logger.ts";
 import { bootstrap } from "../BootStrapData.ts";
 
@@ -41,12 +40,12 @@ class AgregationService {
     logger.log("info", `Boostraped ${initialData.length} entries`);
   }
   async agregate(source: URL) {
-    try{
+    try {
       const instance = axios.create({
         baseURL: `https://${source.hostname}`,
         timeout: +this.timeout,
       });
-  
+
       instance.interceptors.request.use((request) => {
         logger.log(
           "http",
@@ -54,7 +53,7 @@ class AgregationService {
         );
         return request;
       });
-  
+
       instance.interceptors.response.use((response) => {
         logger.log(
           "http",
@@ -63,7 +62,7 @@ class AgregationService {
         return response;
       });
       const data = await instance.get(source.pathname).then((res) => res.data);
-  
+
       const isPresent = await PriceModel.findOne({
         timestamp: data.time.updatedISO,
       });
@@ -76,8 +75,8 @@ class AgregationService {
           price: data.bpi.USD.rate_float,
         });
       }
-    }catch(e){
-      logger.log("warn",e)
+    } catch (e) {
+      logger.log("warn", e);
     }
   }
 }

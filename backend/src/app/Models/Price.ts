@@ -27,8 +27,3 @@ export const PriceSchema = new mongoose.Schema(
 
 export const PriceModel = mongoose.model("PriceSchema", PriceSchema);
 
-// {
-//     "time": ISODate("20210701T13:00:01.343"),
-//     "symbol": "BTC-USD",
-//     "price": 33451.33
-//  }
